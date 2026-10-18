@@ -1,0 +1,9 @@
+# Dev server
+serve.js
+
+# Video files (large binary assets)
+*.mp4
+
+# OS & environment metadata
+.DS_Store
+Thumbs.db
