@@ -9,7 +9,7 @@
   'use strict';
 
   // --- Configuration & Constants ---
-  const TOTAL_FRAMES = 240;
+  const TOTAL_FRAMES = 180;
   const CANVAS_ID = 'hero-canvas';
   const SCROLL_CONTAINER_SELECTOR = '#hero-pin-target';
 
@@ -129,9 +129,32 @@
     ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
   }
 
+  /**
+   * Nearest-Loaded-Frame Fallback:
+   * Returns the exact frame if loaded, or scans outward for the closest
+   * already-loaded keyframe so the canvas never flashes blank or stutters
+   * while Pass 2 downloads in the background.
+   */
+  function getBestAvailableFrame(targetIndex) {
+    if (state.frames[targetIndex] && state.frames[targetIndex].complete && state.frames[targetIndex].naturalWidth > 0) {
+      return state.frames[targetIndex];
+    }
+    for (let delta = 1; delta < TOTAL_FRAMES; delta++) {
+      const left = targetIndex - delta;
+      if (left >= 0 && state.frames[left] && state.frames[left].complete && state.frames[left].naturalWidth > 0) {
+        return state.frames[left];
+      }
+      const right = targetIndex + delta;
+      if (right < TOTAL_FRAMES && state.frames[right] && state.frames[right].complete && state.frames[right].naturalWidth > 0) {
+        return state.frames[right];
+      }
+    }
+    return null;
+  }
+
   function renderCurrentFrame() {
-    const frame = state.frames[state.currentFrameIndex];
-    if (frame && frame.complete) {
+    const frame = getBestAvailableFrame(state.currentFrameIndex);
+    if (frame) {
       drawFrameToCanvas(frame);
     }
   }
@@ -143,92 +166,114 @@
   }
 
   // ==========================================================================
-  // 3. ROBUST FRAME PRELOADER WITH REAL-TIME PROGRESS
+  // 3. TWO-PASS PROGRESSIVE FRAME PRELOADER
   // ==========================================================================
   function getFramePath(index, isWebp = true) {
     const pad = String(index + 1).padStart(4, '0');
     return isWebp ? `frames/frame_${pad}.webp` : `frames/frame_${pad}.jpg`;
   }
 
-  function initPreloader() {
-    let loadedOrErrored = 0;
-    const concurrency = 16;
-    let nextIndexToLoad = 0;
-
-    // Test first frame support
-    const testImg = new Image();
-    testImg.src = getFramePath(0, true);
-    testImg.onload = () => {
-      state.useWebp = true;
-      startBatchLoading();
-    };
-    testImg.onerror = () => {
-      state.useWebp = false;
-      startBatchLoading();
-    };
-
-    function startBatchLoading() {
-      for (let i = 0; i < concurrency; i++) {
-        loadNext();
-      }
+  function loadSingleFrame(index, onDone) {
+    if (state.frames[index] && state.frames[index].complete && state.frames[index].naturalWidth > 0) {
+      if (onDone) onDone(state.frames[index]);
+      return;
     }
 
-    function loadNext() {
-      if (nextIndexToLoad >= TOTAL_FRAMES) return;
-      const idx = nextIndexToLoad++;
-      const img = new Image();
-
-      img.onload = () => {
-        state.frames[idx] = img;
-        loadedOrErrored++;
-        onFrameLoaded(idx);
-        loadNext();
-      };
-
-      img.onerror = () => {
-        // Fallback to jpg or alternative path
-        const fallback = new Image();
-        fallback.src = getFramePath(idx, false);
-        fallback.onload = () => {
-          state.frames[idx] = fallback;
-          loadedOrErrored++;
-          onFrameLoaded(idx);
-          loadNext();
-        };
-        fallback.onerror = () => {
-          // If neither is found, borrow adjacent frame to prevent missing visuals
-          loadedOrErrored++;
-          onFrameLoaded(idx);
-          loadNext();
-        };
-      };
-
-      img.src = getFramePath(idx, state.useWebp);
-    }
-
-    function onFrameLoaded(index) {
+    const img = new Image();
+    img.onload = () => {
+      state.frames[index] = img;
       state.loadedFramesCount++;
-      const percent = Math.min(100, Math.round((loadedOrErrored / TOTAL_FRAMES) * 100));
+      // If user is currently looking at or near this frame, re-render for maximum crispness
+      if (Math.abs(state.currentFrameIndex - index) <= 1) {
+        renderCurrentFrame();
+      }
+      if (onDone) onDone(img);
+    };
 
+    img.onerror = () => {
+      // Fallback attempt to jpg
+      const fallback = new Image();
+      fallback.onload = () => {
+        state.frames[index] = fallback;
+        state.loadedFramesCount++;
+        if (Math.abs(state.currentFrameIndex - index) <= 1) {
+          renderCurrentFrame();
+        }
+        if (onDone) onDone(fallback);
+      };
+      fallback.onerror = () => {
+        if (onDone) onDone(null);
+      };
+      fallback.src = getFramePath(index, false);
+    };
+
+    img.src = getFramePath(index, state.useWebp);
+  }
+
+  function initPreloader() {
+    // Pass 1: Critical first frame loaded immediately and drawn right away
+    const firstImg = new Image();
+    firstImg.onload = () => {
+      state.frames[0] = firstImg;
+      state.loadedFramesCount++;
+      drawFrameToCanvas(firstImg);
+    };
+    firstImg.src = getFramePath(0, state.useWebp);
+
+    // Build Pass 1 Priority Batch (~25 keyframes):
+    // First 10 frames (1 to 10 -> indices 0 to 9)
+    // Plus every 8th frame across timeline (16, 24, 32 ... 180 -> indices 15, 23, 31 ... 179)
+    const priorityIndices = [];
+    for (let i = 0; i < Math.min(10, TOTAL_FRAMES); i++) {
+      if (!priorityIndices.includes(i)) priorityIndices.push(i);
+    }
+    for (let f = 16; f <= TOTAL_FRAMES; f += 8) {
+      const idx = f - 1;
+      if (!priorityIndices.includes(idx)) priorityIndices.push(idx);
+    }
+    // Ensure the final frame is in the priority batch
+    const lastIdx = TOTAL_FRAMES - 1;
+    if (!priorityIndices.includes(lastIdx)) {
+      priorityIndices.push(lastIdx);
+    }
+
+    const totalPriority = priorityIndices.length;
+    let loadedPriority = 0;
+
+    function updatePriorityProgress() {
+      const percent = Math.min(100, Math.round((loadedPriority / totalPriority) * 100));
       if (loaderFill) loaderFill.style.width = `${percent}%`;
       if (loaderPercent) loaderPercent.textContent = `${percent}%`;
 
-      // Draw initial frame as soon as frame 0 or any early frame arrives
-      if (index === 0 || (state.loadedFramesCount === 1 && !state.isLoaded)) {
-        renderFrameByIndex(0);
-      }
-
-      if (loadedOrErrored >= TOTAL_FRAMES && !state.isLoaded) {
+      if (loadedPriority >= totalPriority && !state.isLoaded) {
         completeLoading();
       }
     }
 
-    // Safety timeout: if 90% loaded or 4 seconds elapse, proceed smoothly
+    // Load priority frames with concurrency pool
+    let nextPriorityPos = 0;
+    const priorityConcurrency = 8;
+
+    function loadNextPriority() {
+      if (nextPriorityPos >= priorityIndices.length) return;
+      const idx = priorityIndices[nextPriorityPos++];
+      loadSingleFrame(idx, () => {
+        loadedPriority++;
+        updatePriorityProgress();
+        loadNextPriority();
+      });
+    }
+
+    for (let i = 0; i < priorityConcurrency; i++) {
+      loadNextPriority();
+    }
+
+    // Safety timeout: unlock after maximum 4 seconds regardless of network speed
     setTimeout(() => {
-      if (!state.isLoaded && loadedOrErrored >= 20) {
+      if (!state.isLoaded) {
         completeLoading();
       }
-    }, 4500);
+    }, 4000);
   }
 
   function completeLoading() {
@@ -242,14 +287,45 @@
     // Smooth GSAP exit animation for preloader
     gsap.to(loader, {
       opacity: 0,
-      duration: 0.75,
+      duration: 0.65,
       ease: 'power2.inOut',
       onComplete: () => {
         if (loader) loader.classList.add('loaded');
         initScrollAnimations();
         initStage1Entrance();
+        // Start Pass 2: Background Streaming with Concurrency Pool of 6
+        startPass2BackgroundStreaming();
       },
     });
+  }
+
+  /**
+   * Pass 2: Background Streaming with Concurrency Pool of 6 parallel requests
+   */
+  function startPass2BackgroundStreaming() {
+    const remainingIndices = [];
+    for (let i = 0; i < TOTAL_FRAMES; i++) {
+      if (!state.frames[i] || !state.frames[i].complete) {
+        remainingIndices.push(i);
+      }
+    }
+
+    if (remainingIndices.length === 0) return;
+
+    const pass2Concurrency = 6;
+    let nextRemainingPos = 0;
+
+    function loadNextRemaining() {
+      if (nextRemainingPos >= remainingIndices.length) return;
+      const idx = remainingIndices[nextRemainingPos++];
+      loadSingleFrame(idx, () => {
+        loadNextRemaining();
+      });
+    }
+
+    for (let i = 0; i < pass2Concurrency; i++) {
+      loadNextRemaining();
+    }
   }
 
   // ==========================================================================
