@@ -161,6 +161,25 @@ table.lb tr.flash td { animation: flash 1.6s; }
 .gate { text-align: center; }
 .gate .lock { font-size: 40px; }
 @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } .plan.pop { order: -1; } }
+
+/* sheets + keys */
+.top .pill + .pill { margin-left: 6px; }
+.top .pill { white-space: nowrap; }
+@media (max-width: 430px) { .top img.word { display: none; } .top .pill { padding: 6px 10px; } }
+.who { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 14px; margin: 4px 0 0; }
+.who b { font-weight: 900; }
+button.link { background: none; border: 0; padding: 0 0 0 6px; color: var(--forest); font-weight: 800; text-decoration: underline; cursor: pointer; font-size: 14px; }
+.day-card { padding: 16px 18px; }
+.day-card.today { border: 2px solid var(--leaf); }
+.day-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.day-head h2 { margin: 2px 0 0; font-size: 19px; }
+.day-head .badge { flex: none; margin-top: 2px; }
+.dl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.dl-row .btn { margin-top: 10px; font-size: 14px; padding: 12px 10px; }
+.btn.locked { background: var(--tint); color: var(--brown); box-shadow: 0 4px 0 #d3cab3; }
+.btn[disabled].locked, .btn[disabled].dark { cursor: default; }
+.key-cta { margin-top: 12px; }
+@media (max-width: 520px) { .dl-row { grid-template-columns: 1fr; } }
 @media (max-width: 520px) {
   .hide-sm { display: none; }
   .top img.word { height: 24px; }

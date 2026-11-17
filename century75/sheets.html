@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Sheets · Century in 75 · Bhavishya SMS</title>
+<meta name="description" content="Century in 75 daily practice sheets (DPPs) and answer keys. Each answer key unlocks after that day's exit quiz.">
+<meta name="theme-color" content="#F8F5EC">
+<link rel="icon" href="img/logo_tree_transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="c75.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a href="../index.html"><img class="tree" src="img/logo_tree_transparent.png" alt=""></a>
+    <img class="word" src="img/logo_wordmark_transparent.png" alt="Bhavishya SMS">
+    <span class="spacer"></span>
+    <a class="pill" href="quiz.html">📝 Quiz</a>
+    <a class="pill" href="leaderboard.html">🏆</a>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">Century in 75 · Daily practice</div>
+    <h1>Practice sheets &amp; <mark>answer keys</mark></h1>
+    <p class="muted small">Download the day's sheet at 9:50 PM. Solve it, take the exit quiz, and that day's answer key unlocks right away.</p>
+  </section>
+
+  <main id="main" aria-live="polite"><div class="card empty-state muted">Loading the sheets…</div></main>
+  <div id="promo"></div>
+  <p class="foot muted">Answer keys follow the CBSE marking scheme: check your written answers step by step.</p>
+</div>
+
+<script src="c75.js"></script>
+<script>
+(function () {
+  var el = C75.el, main = document.getElementById('main');
+  var me = C75.store.get('me');
+
+  function details(after) {
+    var name = el('input', { class: 'in', id: 'nm', autocomplete: 'name', maxlength: '40', placeholder: 'e.g. Riya Sharma', value: (me && me.name) || '' });
+    var phone = el('input', { class: 'in', id: 'ph', type: 'tel', inputmode: 'numeric', autocomplete: 'tel-national', maxlength: '14', placeholder: '98765 43210', value: (me && me.phone) || '' });
+    var err = el('div', { class: 'err', hidden: '' });
+    function go(e) {
+      e.preventDefault();
+      var n = name.value.replace(/\s+/g, ' ').trim(), p = phone.value.replace(/\D/g, '');
+      if (p.length > 10) p = p.slice(-10);
+      if (n.length < 2) { err.textContent = 'Please write your name.'; err.hidden = false; return; }
+      if (!/^[6-9]\d{9}$/.test(p)) { err.textContent = 'Please enter your 10-digit WhatsApp number.'; err.hidden = false; return; }
+      me = { name: n, phone: p }; C75.store.set('me', me);
+      after();
+    }
+    main.innerHTML = '';
+    main.appendChild(el('form', { class: 'card', onsubmit: go, novalidate: '' }, [
+      el('h2', { text: 'Who is downloading?' }),
+      el('p', { class: 'muted small', text: 'Use the same name and WhatsApp number as in the exit quiz: that is how your answer keys unlock. Pass holders: use the number you paid with.' }),
+      el('label', { class: 'f', for: 'nm', text: 'Your name' }), name,
+      el('label', { class: 'f', for: 'ph', text: 'WhatsApp number' }), el('div', { class: 'phone' }, [el('span', { text: '+91' }), phone]),
+      err,
+      el('button', { class: 'btn', type: 'submit', text: 'Show my sheets →' })
+    ]));
+  }
+
+  function getMe() { return me; }
+
+  function sheetBtn(d) {
+    var label = '📄 ' + (d.sheetLabel || 'Practice sheet');
+    if (d.sheet === 'ok') return C75.dlButton(label, 'dark', d.day, 'sheet', getMe);
+    if (d.sheet === 'later') return el('button', { class: 'btn dark', disabled: '', text: 'Sheet opens at ' + C75.fmtTime(d.releaseAt) });
+    if (d.sheet === 'pass') return el('a', { class: 'btn dark', href: '#passes', text: '🔒 Sheet: pass needed' });
+    return null;
+  }
+
+  function keyBtn(d) {
+    if (d.key === 'ok') return C75.dlButton('🔑 ' + (d.keyLabel || 'Answer key'), '', d.day, 'key', getMe);
+    if (d.key === 'quiz') return el('a', { class: 'btn locked', href: 'quiz.html?day=' + d.day, text: '🔒 Take the Day ' + C75.pad(d.day) + ' quiz to unlock the key' });
+    if (d.key === 'later') return el('button', { class: 'btn locked', disabled: '', text: '🔒 Answer key opens at 11:00 pm' });
+    if (d.key === 'pass') return el('a', { class: 'btn locked', href: '#passes', text: '🔒 Answer key: pass needed' });
+    return null;
+  }
+
+  function render(r) {
+    main.innerHTML = '';
+    main.appendChild(el('div', { class: 'who' }, [
+      el('span', { text: 'Downloading as ' }), el('b', { text: me.name }), el('span', { class: 'muted', text: ' · ··' + me.phone.slice(-2) }),
+      el('button', { class: 'link', type: 'button', text: 'change', onclick: function () { details(load); } })
+    ]));
+    if (!r.days.length) {
+      main.appendChild(el('div', { class: 'card empty-state' }, [el('h2', { text: 'No sheets yet' }), el('p', { class: 'muted', text: 'The first sheet appears here on its day.' })]));
+      return;
+    }
+    r.days.forEach(function (d, i) {
+      var title = 'Day ' + C75.pad(d.day);
+      main.appendChild(el('div', { class: 'card day-card' + (i === 0 ? ' today' : '') }, [
+        el('div', { class: 'day-head' }, [
+          el('div', {}, [
+            el('div', { class: 'kicker', text: (d.day === r.today ? 'Today · ' : '') + C75.fmtDate(d.date) + (d.free ? ' · Free' : '') }),
+            el('h2', { text: title + (d.sheetLabel && d.sheetLabel !== 'Practice Sheet' ? ' · ' + d.sheetLabel : '') })
+          ]),
+          d.key === 'ok' ? el('span', { class: 'badge ok', text: '✓ Key unlocked' }) : null
+        ]),
+        el('div', { class: 'dl-row' }, [sheetBtn(d), keyBtn(d)])
+      ]));
+    });
+  }
+
+  function load() {
+    main.innerHTML = '<div class="card empty-state muted">Loading your sheets…</div>';
+    C75.post({ action: 'files', phone: me.phone }).then(function (r) {
+      render(r);
+      var promo = document.getElementById('promo'); promo.innerHTML = '';
+      if (!r.pass) promo.appendChild(C75.plans(C75.freeDaysLeft()
+        ? { title: 'Keep the sheets coming after Week 1', sub: 'Days 1–7 are free. From Day 8, sheets, answer keys, exit quizzes and the leaderboard continue with a pass.' }
+        : { title: 'Get a pass for Days 8–75', sub: 'Every pass includes all practice sheets, answer keys, exit quizzes and the leaderboard.' }));
+    }).catch(function (e) {
+      main.innerHTML = '';
+      main.appendChild(el('div', { class: 'card empty-state' }, [el('h2', { text: 'Could not load the sheets' }), el('p', { class: 'muted', text: e.message }),
+        el('button', { class: 'btn dark', text: 'Try again', onclick: load })]));
+    });
+  }
+
+  var b = C75.freeBanner();
+  if (b) document.querySelector('.hero').appendChild(b);
+  if (me && me.name && me.phone) load(); else details(load);
+})();
+</script>
+</body>
+</html>

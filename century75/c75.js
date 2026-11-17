@@ -17,7 +17,7 @@ var C75_PLANS = [
 
 (function () {
   var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  if (C75_API.indexOf('PASTE') === 0 && local) C75_API = '/api';  // local mock server (century75/web/test/mock_server.js)
+  if (local) C75_API = '/api';  // localhost = the mock server (century75/web/test/mock_server.js), never real data
 
   function call(url, opts) {
     return fetch(url, opts).then(function (r) {
@@ -38,6 +38,31 @@ var C75_PLANS = [
     },
     post: function (body) {  // text/plain = no CORS preflight (Apps Script can't answer one)
       return call(C75_API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
+    },
+    // Ask the server for a sheet / answer key and save it. Resolves true when saved; rejects with err.data.
+    download: function (day, kind, me) {
+      return this.post({ action: 'download', day: day, kind: kind, name: me.name, phone: me.phone }).then(function (r) {
+        var bin = atob(r.data), bytes = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        var url = URL.createObjectURL(new Blob([bytes], { type: r.mime || 'application/pdf' }));
+        var a = document.createElement('a');
+        a.href = url; a.download = r.name; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+        return true;
+      });
+    },
+    // A download button that shows its own busy / error state.
+    dlButton: function (label, cls, day, kind, getMe) {
+      var self = this, b = this.el('button', { class: 'btn ' + (cls || ''), type: 'button', text: label });
+      b.addEventListener('click', function () {
+        var me = getMe();
+        if (!me) return;
+        b.disabled = true; b.textContent = 'Downloading…';
+        self.download(day, kind, me).then(function () { b.textContent = '✓ Downloaded'; })
+          .catch(function (e) { b.textContent = label; alert(e.message); })
+          .then(function () { b.disabled = false; });
+      });
+      return b;
     },
     store: {
       get: function (k) { try { return JSON.parse(localStorage.getItem('c75_' + k)); } catch (e) { return null; } },

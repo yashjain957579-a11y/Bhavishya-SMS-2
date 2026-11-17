@@ -18,6 +18,7 @@
     <a href="../index.html"><img class="tree" src="img/logo_tree_transparent.png" alt=""></a>
     <img class="word" src="img/logo_wordmark_transparent.png" alt="Bhavishya SMS">
     <span class="spacer"></span>
+    <a class="pill" href="sheets.html">📄 Sheets</a>
     <a class="pill" href="leaderboard.html">🏆 Leaderboard</a>
   </header>
 
@@ -113,6 +114,7 @@
     show(el('div', { class: 'card score' }, [
       el('h2', { text: 'Quiz opens at ' + C75.fmtTime(Q.openAt) }), box,
       el('p', { class: 'muted', text: 'Solve the practice sheet first. The quiz unlocks with the sheet and counts for the leaderboard until ' + C75.fmtTime(Q.countUntil) + '.' }),
+      el('a', { class: 'btn dark', href: 'sheets.html', text: '📄 Practice sheets & answer keys' }),
       Q.free ? null : el('p', { class: 'muted small', text: 'From Day 8 the exit quiz is for pass holders: use the WhatsApp number you paid with.' })
     ]), otherDays(), promo());
   }
@@ -121,7 +123,8 @@
     show(el('div', { class: 'card score' }, [
       el('h2', { text: 'You already took the Day ' + C75.pad(Q.day) + ' quiz' }),
       el('div', { class: 'big', text: done.score + '' }, [el('small', { text: '/' + done.outOf })]),
-      el('a', { class: 'btn', href: 'leaderboard.html', text: '🏆 See the leaderboard' }),
+      me && me.phone ? C75.dlButton('🔑 Download the Day ' + C75.pad(Q.day) + ' answer key', '', Q.day, 'key', function () { return me; }) : null,
+      el('a', { class: 'btn' + (me && me.phone ? ' dark' : ''), href: 'leaderboard.html', text: '🏆 See the leaderboard' }),
       el('a', { class: 'btn dark', href: '?day=' + Q.day + '&retake=1', text: 'Take it again (practice, not counted)' })
     ]), Q.free ? promo() : null, otherDays());
   }
@@ -236,8 +239,9 @@
       el('div', { class: 'kicker', text: me.name + ' · Day ' + C75.pad(Q.day) }), ring,
       el('h2', { text: cheer }),
       el('div', { class: 'note' + (r.counted ? '' : ' warn'), text: msg }),
-      el('a', { class: 'btn', href: 'leaderboard.html', text: '🏆 See the leaderboard' }),
-      el('p', { class: 'muted small', text: 'Answer key for the practice sheet comes at 11 PM on the Bhavishya WhatsApp Channel.' }),
+      C75.dlButton('🔑 Download the Day ' + C75.pad(Q.day) + ' answer key', 'key-cta', Q.day, 'key', function () { return me; }),
+      el('a', { class: 'btn dark', href: 'leaderboard.html', text: '🏆 See the leaderboard' }),
+      el('p', { class: 'muted small' }, ['Unlocked by your quiz: check your practice-sheet answers step by step. All sheets and keys: ', el('a', { href: 'sheets.html', text: 'Practice sheets' }), '.']),
       Q.free && C75.freeDaysLeft() ? C75.freeBanner() : null
     ]), review, Q.free ? promo() : null);
   }
