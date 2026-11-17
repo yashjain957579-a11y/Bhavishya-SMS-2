@@ -3,869 +3,521 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bhavishya SMS (Study Made Simple) | 3D Holographic Learning for CBSE Board Toppers</title>
-  <meta name="description" content="Experience active learning, 3D concept simulations, and smart PYQ mastery for CBSE Class 9-12 with Yash Barmecha at Bhavishya SMS, Jaora.">
-  <meta name="theme-color" content="#000000">
+  <title>Century in 75 — CBSE Class 10 Board Master Series | Bhavishya SMS</title>
+  <meta name="description" content="CBSE Class 10 Board Exam Master Series by Bhavishya SMS. Week 1 (Days 1–7) 100% free: daily worksheets, detailed notes and line-by-line AI board copy evaluation against the official CBSE marking scheme. Passes from ₹249.">
+  <meta name="theme-color" content="#2D6A2E">
+  <link rel="icon" href="assets/logo-crop.webp" type="image/webp">
 
-  <!-- Google Fonts: Space Grotesk, Outfit, Inter -->
+  <!-- Fonts (same families as the main Bhavishya SMS site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome 6 Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Preload Critical First Frame for Instant Paint -->
-  <link rel="preload" as="image" href="frames/frame_0001.webp">
+  <link rel="stylesheet" href="series.css">
 </head>
-<body class="bg-black text-slate-100 antialiased selection:bg-cyan-500 selection:text-black">
+<body>
 
-  <!-- ========================================================================= -->
-  <!-- 0. HIGH-TECH 3D PRELOADER & INITIALIZATION SCREEN                        -->
-  <!-- ========================================================================= -->
-  <div id="loader" class="loader-overlay" aria-live="polite">
-    <div class="loader-content">
-      <div class="loader-hologram-ring">
-        <div class="ring-core">
-          <i class="fa-solid fa-atom loader-icon"></i>
-        </div>
-        <div class="ring-orbit ring-1"></div>
-        <div class="ring-orbit ring-2"></div>
-      </div>
-
-      <div class="loader-branding">
-        <h2 class="loader-title">BHAVISHYA <span class="text-gold">SMS</span></h2>
-        <p class="loader-tagline">Study Made Simple • Yash Barmecha</p>
-      </div>
-
-      <div class="loader-progress-wrap">
-        <div class="loader-progress-bar">
-          <div id="loader-fill" class="loader-progress-fill"></div>
-        </div>
-        <div class="loader-stats">
-          <span class="loader-status" id="loader-status-text">INITIALIZING 3D CONCEPT ENGINE...</span>
-          <span class="loader-percent" id="loader-percent-num">0%</span>
-        </div>
-      </div>
-      <p class="loader-subhint">Rendering holographic frame sequence at 60 FPS</p>
+  <!-- ===================================================================== -->
+  <!-- A. STICKY ANNOUNCEMENT BAR + HEADER                                    -->
+  <!-- ===================================================================== -->
+  <div class="top-shell" id="top-shell">
+    <div class="announce-bar" role="region" aria-label="Offer announcement">
+      <p>
+        <strong>🎁 FIRST WEEK (DAYS 1–7) IS 100% FREE FOR ALL!</strong>
+        <span class="announce-detail">Get Free Daily Worksheets, Detailed Notes &amp; Week 1 AI Test Evaluation</span>
+        <span class="announce-arrow" aria-hidden="true">→</span>
+        <a href="#free-week-1" data-link="free_week1_access" class="announce-cta">Start Week 1 Free</a>
+      </p>
     </div>
+
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Bhavishya — Study Made Simple, home">
+          <img src="assets/logo-crop.webp" alt="Bhavishya — Study Made Simple" width="156" height="170" class="brand-logo">
+          <span class="brand-series">
+            <span class="brand-series-name">Century in 75</span>
+            <span class="brand-series-sub">CBSE Class 10 Master Series</span>
+          </span>
+        </a>
+
+        <nav class="header-nav" aria-label="Page sections">
+          <a href="#free-week-1">Free Week 1</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#compare">Compare</a>
+          <a href="#faq">FAQ</a>
+          <a href="century75/quiz.html">Exit Quiz</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-btn wa" href="https://wa.me/918889404060?text=Hi%20Bhavishya%20SMS%2C%20I%20have%20a%20question%20about%20the%20Century%20in%2075%20Class%2010%20series" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#pricing" class="btn btn-primary btn-sm">See Passes <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </header>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- 1. STICKY GLASSMORPHIC NAVIGATION BAR                                     -->
-  <!-- ========================================================================= -->
-  <header id="main-nav" class="nav-container">
-    <div class="nav-inner">
-      <a href="#" class="nav-brand" aria-label="Bhavishya SMS Home">
-        <div class="brand-emblem">
-          <span class="emblem-symbol">Σ</span>
-          <div class="emblem-glow"></div>
-        </div>
-        <div class="brand-text">
-          <span class="brand-title">BHAVISHYA <span class="sms-badge">SMS</span></span>
-          <span class="brand-sub">STUDY MADE SIMPLE</span>
-        </div>
-      </a>
+  <main id="top">
 
-      <nav class="nav-links d-none-mobile">
-        <a href="#hero-pin-target" class="nav-link active">Experience</a>
-        <a href="#methodology" class="nav-link">Methodology</a>
-        <a href="#programs" class="nav-link">Programs</a>
-        <a href="#results" class="nav-link">Toppers</a>
-        <a href="#educator" class="nav-link">Yash Sir</a>
-        <a href="#contact-hub" class="nav-link">Center & FAQ</a>
-      </nav>
+    <!-- ===================================================================== -->
+    <!-- B. HERO — scroll-scrubbed canvas (same engine as the main site)       -->
+    <!-- ===================================================================== -->
+    <section class="hero" id="hero" aria-label="Century in 75 — overview">
+      <div class="hero-stage" id="hero-stage">
+        <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-shade" aria-hidden="true"></div>
 
-      <div class="nav-actions">
-        <a href="https://wa.me/919425984501?text=Hi%20Yash%20Sir,%20I%20want%20to%20inquire%20about%20admissions%20at%20Bhavishya%20SMS" target="_blank" rel="noopener noreferrer" class="btn-icon-wa" title="Chat on WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <button type="button" class="btn-cyan-glow btn-nav-cta" onclick="openDemoModal()">
-          <span>Book Free Demo</span>
-          <i class="fa-solid fa-arrow-right-long"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+        <div class="container hero-content">
+          <div class="stage-grid">
 
-  <!-- ========================================================================= -->
-  <!-- 2. SCROLL-SCRUBBED 3D HERO CONTAINER (400vh Scroll Distance)              -->
-  <!-- ========================================================================= -->
-  <section id="hero-pin-target" class="hero-scroll-container">
-    <div class="hero-sticky-stage">
-      
-      <!-- 2.1 Full-Viewport Interactive HTML5 Canvas -->
-      <canvas id="hero-canvas" class="hero-canvas" width="1920" height="1080"></canvas>
+            <!-- STAGE 1 : The offer -->
+            <div class="stage stage-1" id="stage-1">
+              <span class="pill-badge"><span class="pulse-dot"></span>🌱 CBSE CLASS 10 BOARD EXAM MASTER SERIES • BY BHAVISHYA SMS</span>
 
-      <!-- 2.2 Seamless Vignette & Dark Left-Space Gradient Overlays -->
-      <div class="vignette-overlay pointer-events-none"></div>
-      <div class="left-gradient-mask pointer-events-none"></div>
-      <div class="ambient-glow cyan-ambient pointer-events-none"></div>
-      <div class="ambient-glow gold-ambient pointer-events-none"></div>
+              <h1 class="hero-title">
+                Stop Losing Marks on Step-Marking &amp; Missing Keywords.
+                <span class="hero-title-accent">Crack 95%+ in 75 Days.</span>
+              </h1>
 
-      <!-- 2.3 Scroll-Choreographed Content Overlays (Left 50% Viewport) -->
-      <div class="hero-content-viewport">
-        
-        <!-- ================= STAGE 1 (0% – 30% Scroll): The Hook ================= -->
-        <div id="stage-1" class="stage-overlay stage-1">
-          <div class="stage-badge">
-            <span class="badge-pulse"></span>
-            <span class="badge-text">⚡ ENGINEERED FOR BOARD TOPPERS | CLASS 9 – 12</span>
-          </div>
+              <p class="hero-sub">Combine Daily YouTube Live Classes (<a href="https://www.youtube.com/@Bhavishya_sms" target="_blank" rel="noopener">@Bhavishya_sms</a>) with 75 Branded Daily Practice Sheets, Detailed Notes, and Instant Line-by-Line AI Board Copy Evaluation checked strictly against the Official CBSE Marking Scheme.</p>
 
-          <h1 class="hero-headline">
-            Study Made Simple.<br>
-            <span class="text-gradient-cyan">Concepts Made</span><br>
-            <span class="text-gradient-gold">Unforgettable.</span>
-          </h1>
-
-          <p class="hero-subheadline">
-            Experience active learning, visual simulations, and smart PYQ mastery for CBSE Maths, Science & Social Science with <strong class="text-white">Yash Barmecha</strong>.
-          </p>
-
-          <!-- Key Metrics Pills -->
-          <div class="metrics-row">
-            <div class="metric-pill">
-              <span class="metric-num text-cyan">100/100</span>
-              <span class="metric-label">CBSE Board Scores</span>
-            </div>
-            <div class="metric-pill">
-              <span class="metric-num text-gold">10+ Yrs</span>
-              <span class="metric-label">Proven Pedagogy</span>
-            </div>
-            <div class="metric-pill">
-              <span class="metric-num text-white">0%</span>
-              <span class="metric-label">Rote Memorization</span>
-            </div>
-          </div>
-
-          <!-- Stage 1 CTAs -->
-          <div class="hero-cta-group">
-            <button type="button" class="btn-cyan-glow btn-lg" onclick="openDemoModal('Stage 1 - Join Offline & Hybrid')">
-              <i class="fa-solid fa-graduation-cap"></i>
-              <span>Join Offline & Hybrid Batches</span>
-            </button>
-            <a href="https://youtube.com/@Bhavishya_sms" target="_blank" rel="noopener noreferrer" class="btn-glass btn-lg">
-              <i class="fa-brands fa-youtube text-red"></i>
-              <span>Explore @Bhavishya_sms</span>
-            </a>
-          </div>
-
-          <!-- Scroll Down Guidance Indicator -->
-          <div class="scroll-scrub-indicator">
-            <div class="mouse-icon">
-              <div class="wheel"></div>
-            </div>
-            <span>Scroll to explore the 3D Holographic Concepts</span>
-            <i class="fa-solid fa-chevron-down indicator-arrow"></i>
-          </div>
-        </div>
-
-        <!-- ================= STAGE 2 (35% – 65% Scroll): Hologram Expands ================= -->
-        <div id="stage-2" class="stage-overlay stage-2">
-          <div class="stage-badge gold-badge">
-            <span class="badge-pulse gold-pulse"></span>
-            <span class="badge-text">✦ 3D VISUALIZATION ENGINE ACTIVE</span>
-          </div>
-
-          <h2 class="stage-title">
-            Transforming Complex Theory Into <span class="text-gradient-cyan">Visual Instinct.</span>
-          </h2>
-          <p class="stage-description">
-            When concepts come alive in 3D, memorization becomes obsolete. Our students grasp in minutes what others struggle with for weeks.
-          </p>
-
-          <!-- 3 Floating Glassmorphic Feature Cards with Mouse-Parallax Tilt -->
-          <div class="feature-cards-stack">
-            
-            <!-- Card 1 -->
-            <div class="glass-feature-card tilt-card" data-tilt>
-              <div class="card-glow-reflection"></div>
-              <div class="card-icon-box icon-cyan">
-                <i class="fa-solid fa-cube"></i>
+              <div class="free-callout">
+                <span class="free-callout-ribbon">WEEK 1 FREE</span>
+                <p class="free-callout-title">✨ EXPERIENCE WEEK 1 (DAYS 1–7) 100% FREE FOR ALL STUDENTS!</p>
+                <p class="free-callout-text">Download Days 1–7 Worksheets + Detailed Chapter Notes + Submit Your Week 1 Test for Line-by-Line AI Evaluation at <strong>₹0</strong> before you even pick a pass!</p>
               </div>
-              <div class="card-content">
-                <div class="card-header-flex">
-                  <h3 class="card-title text-cyan">Visual & Active Learning</h3>
-                  <span class="card-tag">Pillar 01</span>
-                </div>
-                <p class="card-text">
-                  Interactive digital board lectures, live blurting sessions, and 3D concept simulations—zero rote memorization.
-                </p>
-              </div>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="glass-feature-card tilt-card" data-tilt>
-              <div class="card-glow-reflection"></div>
-              <div class="card-icon-box icon-gold">
-                <i class="fa-solid fa-bullseye"></i>
+              <div class="hero-ctas">
+                <a href="#pricing" class="btn btn-primary btn-glow btn-lg">Claim Early Bird Pass — Starting at ₹249 →</a>
+                <a href="#free-week-1" data-link="free_week1_access" class="btn btn-outline-light btn-lg">Access Week 1 Free Material &amp; AI Test →</a>
               </div>
-              <div class="card-content">
-                <div class="card-header-flex">
-                  <h3 class="card-title text-gold">Data-Driven PYQ Mastery</h3>
-                  <span class="card-tag">Pillar 02</span>
-                </div>
-                <p class="card-text">
-                  High-probability CBSE Board questions and step-by-step topper answer presentation engineered for maximum step-marks.
-                </p>
-              </div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="glass-feature-card tilt-card" data-tilt>
-              <div class="card-glow-reflection"></div>
-              <div class="card-icon-box icon-cyan-gold">
-                <i class="fa-solid fa-network-wired"></i>
-              </div>
-              <div class="card-content">
-                <div class="card-header-flex">
-                  <h3 class="card-title text-white">Hybrid Ecosystem</h3>
-                  <span class="card-tag">Pillar 03</span>
-                </div>
-                <p class="card-text">
-                  Learn offline at our premier Jaora smart-classroom or revise 24/7 with on-demand digital archives, live marathons, and masterclasses.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ================= STAGE 3 (70% – 100% Scroll): Programs & Conversion ================= -->
-        <div id="stage-3" class="stage-overlay stage-3">
-          <div class="stage-badge">
-            <span class="badge-pulse"></span>
-            <span class="badge-text">🎯 ADMISSIONS OPEN 2026–2027</span>
-          </div>
-
-          <h2 class="stage-title">
-            Curated Programs For <span class="text-gradient-gold">Board Dominance</span>
-          </h2>
-          <p class="stage-description">
-            Tailored learning paths designed with pinpoint accuracy for CBSE & State Board top percentiles.
-          </p>
-
-          <!-- Interactive Batch & Program Showcase Cards -->
-          <div class="programs-grid-compact">
-            
-            <!-- Program 1: Class 9 & 10 -->
-            <div class="program-card-compact tilt-card" data-tilt>
-              <div class="program-top">
-                <div class="program-class-pill">CLASS 9 & 10</div>
-                <span class="program-seats-pill">Limited 25 Seats/Batch</span>
-              </div>
-              <h3 class="program-name">Foundation & Board Mastery</h3>
-              <p class="program-subjects text-cyan">Maths • Science • Social Studies • English</p>
-              <ul class="program-perks">
-                <li><i class="fa-solid fa-check-double text-cyan"></i> Complete NCERT & Exemplar Drill</li>
-                <li><i class="fa-solid fa-check-double text-cyan"></i> Daily Blurting & Active Recall Sheets</li>
-                <li><i class="fa-solid fa-check-double text-cyan"></i> 10 Full-Length Board Simulation Exams</li>
+              <ul class="hero-stats" aria-label="Series highlights">
+                <li>🎁 First 7 Days 100% Free</li>
+                <li><i class="fa-solid fa-file-pdf"></i> 75 Daily Practice PDFs</li>
+                <li><i class="fa-solid fa-wand-magic-sparkles"></i> Line-by-Line CBSE AI Evaluation</li>
+                <li><i class="fa-solid fa-chalkboard-user"></i> Mentorship by Yash Sir &amp; Rohit Sir</li>
               </ul>
-              <button type="button" class="btn-cyan-outline btn-block" onclick="openDemoModal('Class 9-10 Foundation')">
-                <span>Enroll in Class 9 / 10 Batch</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
             </div>
 
-            <!-- Program 2: Class 11 & 12 -->
-            <div class="program-card-compact tilt-card" data-tilt>
-              <div class="program-top">
-                <div class="program-class-pill gold-pill">CLASS 11 & 12</div>
-                <span class="program-seats-pill">Early Bird Registration</span>
+            <!-- STAGE 2 : Faculty (revealed by scroll on desktop) -->
+            <div class="stage stage-2" id="stage-2">
+              <span class="pill-badge pill-gold"><i class="fa-brands fa-youtube"></i> LIVE DAILY ON YOUTUBE • @Bhavishya_sms</span>
+              <h2 class="stage-title">Learn it live. Practise it daily. <span class="hero-title-accent">Get every answer checked.</span></h2>
+              <div class="faculty-row">
+                <article class="faculty-card">
+                  <span class="faculty-icon"><i class="fa-solid fa-square-root-variable"></i></span>
+                  <div><h3>Yash Sir</h3><p>Mathematics &amp; Science</p></div>
+                </article>
+                <article class="faculty-card">
+                  <span class="faculty-icon"><i class="fa-solid fa-earth-asia"></i></span>
+                  <div><h3>Rohit Sir</h3><p>Social Science</p></div>
+                </article>
               </div>
-              <h3 class="program-name">Senior Secondary Excellence</h3>
-              <p class="program-subjects text-gold">Core Concept Clarity & Exam Strategy</p>
-              <ul class="program-perks">
-                <li><i class="fa-solid fa-check-double text-gold"></i> Derivation & Numerical Mastery Blueprint</li>
-                <li><i class="fa-solid fa-check-double text-gold"></i> 15 Years Chapter-Wise PYQ Decoded</li>
-                <li><i class="fa-solid fa-check-double text-gold"></i> 1-on-1 Strategy & Weak Area Diagnosis</li>
+              <p class="stage-note">High-yield concepts + PYQ mastery every day → a <code>Day-XX.pdf</code> sheet to lock it in → AI step-marking on your handwritten copy.</p>
+              <div class="hero-ctas">
+                <a href="https://www.youtube.com/@Bhavishya_sms" target="_blank" rel="noopener" class="btn btn-outline-light"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
+                <a href="#free-week-1" class="btn btn-lime">Start Week 1 Free →</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- C. WEEK 1 FREE FOR ALL                                                -->
+    <!-- ===================================================================== -->
+    <section class="section section-white" id="free-week-1">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow eyebrow-lime">🎁 DAYS 1–7 • ₹0 • NO PAYMENT NEEDED</span>
+          <h2>Week 1 is <span class="hl">Free for All</span> Class 10 Students</h2>
+          <p>Try the full Century in 75 system for 7 days — worksheets, notes and a real AI board-copy check — before you spend a rupee.</p>
+        </div>
+
+        <div class="free-card" data-reveal>
+          <span class="corner-ribbon">WEEK 1 FREE</span>
+          <div class="free-grid">
+            <article class="free-item" data-reveal-item>
+              <span class="free-icon"><i class="fa-solid fa-file-lines"></i></span>
+              <h3>Free Daily Worksheets <small>(Days 1–7)</small></h3>
+              <p>Full branded <code>Day-01.pdf</code> to <code>Day-07.pdf</code> practice sheets with CBSE Marking Scheme Answer Keys.</p>
+            </article>
+            <article class="free-item" data-reveal-item>
+              <span class="free-icon"><i class="fa-solid fa-book-open-reader"></i></span>
+              <h3>Free Detailed Chapter Notes</h3>
+              <p>Crisp revision notes and daily free MCQ Exit Quizzes for the entire first week. <a href="century75/quiz.html"><strong>Take today's exit quiz →</strong></a> · <a href="century75/leaderboard.html">Live leaderboard</a></p>
+            </article>
+            <article class="free-item" data-reveal-item>
+              <span class="free-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              <h3>Free Week 1 AI Test Evaluation</h3>
+              <p>Write the Week 1 Milestone Subjective Test, upload your handwritten PDF scan, and experience our line-by-line CBSE AI copy evaluation completely free.</p>
+            </article>
+          </div>
+
+          <div class="free-days" aria-label="Free days">
+            <span>Day 1</span><span>Day 2</span><span>Day 3</span><span>Day 4</span><span>Day 5</span><span>Day 6</span><span>Day 7</span>
+            <span class="locked"><i class="fa-solid fa-lock"></i> Day 8–75 with a pass</span>
+          </div>
+
+          <div class="upgrade-box">
+            <div>
+              <h3><i class="fa-solid fa-bolt"></i> Why Upgrade Now?</h3>
+              <p><em>"While Week 1 is open to everyone, the ₹599 Early Bird Pro AI Pass is strictly capped at the first 100 students and Elite Mentorship is capped at 50 seats. Lock in your full 75-day pass early to save ₹200 and ensure uninterrupted Day 8–75 access!"</em></p>
+            </div>
+            <div class="upgrade-actions">
+              <a href="#free-week-1" data-link="free_week1_access" data-free-cta class="btn btn-primary btn-glow">Get Week 1 Free Material →</a>
+              <a href="#pricing" class="btn btn-outline-dark">Compare Passes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- D. PROBLEM vs SOLUTION                                                -->
+    <!-- ===================================================================== -->
+    <section class="section section-ivory" id="why">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">THE 80% CEILING</span>
+          <h2>Why Capable Students Get Stuck at 80%</h2>
+          <p>It's rarely about knowing the concept. It's about how the examiner marks what you write.</p>
+        </div>
+
+        <div class="versus">
+          <article class="versus-card versus-bad" data-reveal-left>
+            <header><span class="versus-tag">Ordinary Preparation</span><i class="fa-solid fa-circle-xmark"></i></header>
+            <ul>
+              <li><i class="fa-solid fa-xmark"></i> Solving papers without knowing CBSE step-marking rules</li>
+              <li><i class="fa-solid fa-xmark"></i> Missing mandatory NCERT keywords</li>
+              <li><i class="fa-solid fa-xmark"></i> Repeating presentation mistakes until the final board exam</li>
+              <li><i class="fa-solid fa-xmark"></i> Waiting weeks for offline test checking</li>
+            </ul>
+            <p class="versus-result">Result: stuck around <strong>80%</strong></p>
+          </article>
+
+          <div class="versus-vs" aria-hidden="true">VS</div>
+
+          <article class="versus-card versus-good" data-reveal-right>
+            <header><span class="versus-tag">Century in 75 AI System</span><i class="fa-solid fa-circle-check"></i></header>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Instant line-by-line AI evaluation within minutes of uploading your handwritten PDF</li>
+              <li><i class="fa-solid fa-check"></i> Step-by-step mark breakdown</li>
+              <li><i class="fa-solid fa-check"></i> Exact missing keyword highlights</li>
+              <li><i class="fa-solid fa-check"></i> Official <code>day-XX_answer.pdf</code> marking-scheme keys and personal answer sheet audits</li>
+            </ul>
+            <p class="versus-result">Target: <strong>95%+</strong> in 75 days</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- E. HOW IT WORKS                                                       -->
+    <!-- ===================================================================== -->
+    <section class="section section-dark" id="how-it-works">
+      <div class="container">
+        <div class="section-head on-dark" data-reveal>
+          <span class="eyebrow eyebrow-lime">4 STEPS • EVERY DAY FOR 75 DAYS</span>
+          <h2>How This Series Works</h2>
+        </div>
+
+        <ol class="steps">
+          <li class="step" data-reveal-item>
+            <span class="step-num">01</span>
+            <span class="step-icon"><i class="fa-brands fa-youtube"></i></span>
+            <h3>Attend Daily Live Classes</h3>
+            <p>Join Yash Sir (Maths &amp; Science) and Rohit Sir (SST) live on YouTube (<a href="https://www.youtube.com/@Bhavishya_sms" target="_blank" rel="noopener">@Bhavishya_sms</a>) for high-yield concept &amp; PYQ mastery.</p>
+          </li>
+          <li class="step" data-reveal-item>
+            <span class="step-num">02</span>
+            <span class="step-icon"><i class="fa-solid fa-file-pen"></i></span>
+            <h3>Solve Daily Practice Sheets</h3>
+            <p>Download your structured <code>Day-XX.pdf</code> worksheet, revise from Detailed Notes, and attempt the daily MCQ Exit Quiz to lock in speed and accuracy.</p>
+          </li>
+          <li class="step" data-reveal-item>
+            <span class="step-num">03</span>
+            <span class="step-icon"><i class="fa-solid fa-pen-nib"></i></span>
+            <h3>Write Milestone &amp; Full Board Papers</h3>
+            <p>On scheduled test days, write your subjective answers on ruled paper just like the real CBSE Board Exam.</p>
+          </li>
+          <li class="step" data-reveal-item>
+            <span class="step-num">04</span>
+            <span class="step-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <h3>Get Instant AI Copy Evaluation &amp; Mentorship</h3>
+            <p>Upload a clear PDF scan of your handwritten answer sheet to get instant step-marking, error tracking, and CBSE Marking Scheme feedback.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- F. PRICING                                                            -->
+    <!-- ===================================================================== -->
+    <section class="section section-ivory" id="pricing">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">CHOOSE YOUR 75-DAY PASS</span>
+          <h2>Week 1 is Free. Pick the Pass for <span class="hl">Days 8–75.</span></h2>
+          <p>One-time payment. Instant access delivered on WhatsApp &amp; Email.</p>
+        </div>
+
+        <div class="pricing-grid">
+
+          <!-- Tier 1 -->
+          <article class="price-card tier-1 tilt" data-reveal-item>
+            <span class="tier-badge badge-green">📘 SELF-STUDY ESSENTIALS (DAYS 1–75)</span>
+            <h3 class="tier-name">Tier 1: Self-Study Pass</h3>
+            <div class="price-row">
+              <span class="price">₹249</span>
+              <span class="mrp">₹499</span>
+              <span class="off">50% OFF</span>
+            </div>
+            <p class="tier-sub">Best for self-study students who want all 75 daily practice sheets, notes, and answer keys beyond the free first week.</p>
+            <ul class="features">
+              <li>Complete <strong>75-Day Daily Practice Sheet PDFs</strong> (<code>Day-01.pdf</code> to <code>Day-75.pdf</code>)</li>
+              <li>Official <strong>CBSE Marking Scheme Answer Keys</strong> (<code>day-XX_answer.pdf</code>)</li>
+              <li><strong>Detailed Chapter Notes</strong> for all chapters</li>
+              <li>Access to all <strong>75 Daily MCQ Exit Quizzes</strong></li>
+              <li><strong>75-Day Master Study &amp; Syllabus Tracker</strong></li>
+              <li><strong>Includes Free Week 1 Test Evaluation</strong> <em class="muted">(No additional AI test credits after Week 1)</em></li>
+            </ul>
+            <a href="#" data-link="tier1_self_study" class="btn btn-outline-dark btn-block">Get Self-Study Pass — ₹249</a>
+          </article>
+
+          <!-- Tier 2 (featured) -->
+          <article class="price-card tier-2 featured tilt" data-reveal-item>
+            <span class="featured-flag">⭐ MOST POPULAR / BEST VALUE</span>
+            <span class="tier-badge badge-lime">🤖 FULL AI COPY EVALUATION</span>
+            <h3 class="tier-name">Tier 2: Pro AI Pass</h3>
+            <div class="price-row">
+              <span class="price" id="pro-price">₹599</span>
+              <span class="mrp">₹1,299</span>
+              <span class="off off-lime">54% OFF</span>
+            </div>
+            <p class="early-note" id="pro-early-note"><strong>Early Bird</strong> — Strictly for the First 100 Students Only!</p>
+            <p class="regular-note">Regular Price: <strong>₹799</strong> (Applies automatically after first 100 seats fill)</p>
+
+            <div class="seat-meter" id="seat-meter" aria-live="polite">
+              <div class="seat-meter-label">
+                <span>🔥 Early Bird ₹599: First 100 Students Only</span>
+                <span id="seat-count"></span>
+              </div>
+              <div class="seat-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Early Bird seats claimed">
+                <div class="seat-fill" id="seat-fill"></div>
+              </div>
+            </div>
+
+            <p class="tier-sub">Best for serious Board aspirants targeting 90–95%+ with full AI copy evaluation across Maths, Science &amp; SST.</p>
+            <ul class="features">
+              <li class="plus"><strong>Everything in Tier 1 (Self-Study Pass)</strong>, PLUS:</li>
+              <li><strong>20 AI-Evaluated Board Tests (25 AI Evaluation Credits)</strong> across the 75 Days:
+                <ul class="sub-features">
+                  <li><strong>15 Chapter Milestone Tests</strong> (30 Marks each = 1 Credit per test)</li>
+                  <li><strong>5 Full-Length 80-Mark CBSE Sample Papers</strong> (2 Credits per paper)</li>
+                </ul>
+              </li>
+              <li><strong>Line-by-Line CBSE Step-Marking &amp; Keyword Feedback</strong></li>
+              <li><strong>Step-Wise Error Tracker &amp; Topper Answer Sheet Comparisons</strong></li>
+            </ul>
+            <a href="#" data-link="tier2_pro_early_bird" id="pro-primary-cta" class="btn btn-gradient btn-block btn-lg">Claim Early Bird Pro Pass — ₹599 →</a>
+            <a href="#" data-link="tier2_pro_regular" id="pro-regular-cta" class="link-secondary">Enroll in Regular Pro Pass — ₹799</a>
+          </article>
+
+          <!-- Tier 3 -->
+          <article class="price-card tier-3 tilt" data-reveal-item>
+            <span class="tier-badge badge-gold">👑 MAXIMUM BOARD PREP • LIMITED TO 50 SEATS</span>
+            <h3 class="tier-name">Tier 3: Elite Mentorship <small>(25 AI Tests + 1-on-1 Copy Review)</small></h3>
+            <div class="price-row">
+              <span class="price">₹1,499</span>
+              <span class="mrp">₹2,499</span>
+              <span class="off off-gold">40% OFF</span>
+            </div>
+            <p class="tier-sub">For future toppers wanting maximum full-length mock practice and direct 1-on-1 faculty mentorship.</p>
+            <ul class="features">
+              <li class="plus"><strong>Everything in Tier 2 (Pro AI Pass)</strong>, PLUS:</li>
+              <li><strong>25 AI-Evaluated Board Tests (35 AI Evaluation Credits):</strong>
+                <ul class="sub-features">
+                  <li><strong>15 Chapter Milestone Tests</strong> (30 Marks each = 1 Credit per test)</li>
+                  <li><strong>10 Full-Length 80-Mark CBSE Sample &amp; Pre-Board Papers</strong> (2 Credits per paper)</li>
+                </ul>
+              </li>
+              <li><strong>Weekly Live Doubt Solving &amp; Exam Strategy Sessions</strong></li>
+              <li><strong>1-on-1 Personal Answer Sheet Audit by Yash Sir &amp; Rohit Sir</strong></li>
+            </ul>
+            <a href="#" data-link="tier3_elite" class="btn btn-gold btn-block">Join Elite Mentorship — ₹1,499</a>
+          </article>
+        </div>
+
+        <p class="pricing-foot" data-reveal><i class="fa-solid fa-shield-halved"></i> Secure checkout via Razorpay • UPI, Cards &amp; Netbanking • Fees are non-refundable — <a href="#terms" data-open-terms>read the terms</a></p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- G. COMPARISON TABLE                                                   -->
+    <!-- ===================================================================== -->
+    <section class="section section-white" id="compare">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">SIDE BY SIDE</span>
+          <h2>Compare Every Pass</h2>
+          <p>Tap a plan to highlight it.</p>
+        </div>
+
+        <div class="plan-chips" role="group" aria-label="Highlight a plan" data-reveal>
+          <button type="button" class="chip" data-col="1">Week 1 Free</button>
+          <button type="button" class="chip" data-col="2">Self-Study ₹249</button>
+          <button type="button" class="chip is-active" data-col="3">Pro AI ₹599</button>
+          <button type="button" class="chip" data-col="4">Elite ₹1,499</button>
+        </div>
+
+        <div class="table-wrap" data-reveal>
+          <table class="compare-table" id="compare-table" data-active="3">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col" data-col="1">Week 1 Free Access<span>₹0 — Days 1–7</span></th>
+                <th scope="col" data-col="2">Tier 1: Self-Study Pass<span>₹249</span></th>
+                <th scope="col" data-col="3">Tier 2: Pro AI Pass<span>₹599 Early Bird / ₹799 Regular</span></th>
+                <th scope="col" data-col="4">Tier 3: Elite Mentorship<span>₹1,499</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Daily Practice Worksheets &amp; Answer Keys</th><td data-col="1">Days 1–7 Only</td><td data-col="2">All 75 Days</td><td data-col="3">All 75 Days</td><td data-col="4">All 75 Days</td></tr>
+              <tr><th scope="row">Detailed Chapter Notes &amp; Daily MCQ Quizzes</th><td data-col="1">Days 1–7 Only</td><td data-col="2">All 75 Days</td><td data-col="3">All 75 Days</td><td data-col="4">All 75 Days</td></tr>
+              <tr><th scope="row">75-Day Master Study Tracker</th><td data-col="1" class="yes">✅</td><td data-col="2" class="yes">✅</td><td data-col="3" class="yes">✅</td><td data-col="4" class="yes">✅</td></tr>
+              <tr><th scope="row">Week 1 Free AI Test Evaluation</th><td data-col="1" class="yes">✅ Included</td><td data-col="2" class="yes">✅ Included</td><td data-col="3" class="yes">✅ Included</td><td data-col="4" class="yes">✅ Included</td></tr>
+              <tr><th scope="row">Full Series AI Evaluation Credits</th><td data-col="1">Week 1 Only</td><td data-col="2">0 Extra Credits</td><td data-col="3"><strong>25 Credits</strong> (20 AI Tests)</td><td data-col="4"><strong>35 Credits</strong> (25 AI Tests)</td></tr>
+              <tr><th scope="row">Chapter Milestone Subjective Tests (30M)</th><td data-col="1">Week 1 Test</td><td data-col="2">Self-Check PDFs</td><td data-col="3">15 AI-Evaluated Tests</td><td data-col="4">15 AI-Evaluated Tests</td></tr>
+              <tr><th scope="row">Full-Length 80M CBSE Sample Papers</th><td data-col="1" class="no">❌</td><td data-col="2">Self-Check PDFs</td><td data-col="3">5 AI-Evaluated Papers</td><td data-col="4">10 AI-Evaluated Papers</td></tr>
+              <tr><th scope="row">Weekly Live Doubt Solving Sessions</th><td data-col="1" class="no">❌</td><td data-col="2" class="no">❌</td><td data-col="3" class="no">❌</td><td data-col="4" class="yes">✅ Included</td></tr>
+              <tr><th scope="row">1-on-1 Personal Copy Audit by Yash Sir &amp; Rohit Sir</th><td data-col="1" class="no">❌</td><td data-col="2" class="no">❌</td><td data-col="3" class="no">❌</td><td data-col="4" class="yes">✅ Included</td></tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row"></th>
+                <td data-col="1"><a href="#free-week-1" data-link="free_week1_access" class="btn btn-sm btn-outline-dark">Start Free</a></td>
+                <td data-col="2"><a href="#" data-link="tier1_self_study" class="btn btn-sm btn-outline-dark">Get ₹249</a></td>
+                <td data-col="3"><a href="#" data-link="tier2_pro_early_bird" data-pro-cta class="btn btn-sm btn-primary">Claim ₹599</a></td>
+                <td data-col="4"><a href="#" data-link="tier3_elite" class="btn btn-sm btn-gold">Join ₹1,499</a></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="table-hint"><i class="fa-solid fa-arrows-left-right"></i> Swipe the table to see every plan</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- H. FAQ + TERMS                                                        -->
+    <!-- ===================================================================== -->
+    <section class="section section-ivory" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">QUESTIONS</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item" data-reveal-item>
+            <button type="button" class="faq-q" aria-expanded="false">What is included in the Free First Week (Days 1–7)?<i class="fa-solid fa-plus"></i></button>
+            <div class="faq-a"><div><p>Every student gets free access to Days 1–7 worksheets, detailed notes, daily MCQ quizzes, and Week 1 test evaluation at ₹0.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal-item>
+            <button type="button" class="faq-q" aria-expanded="false">Why should I enroll in Tier 2 (₹599) or Tier 3 (₹1,499) right now if Week 1 is free?<i class="fa-solid fa-plus"></i></button>
+            <div class="faq-a"><div><p>The ₹599 Early Bird discount on Pro AI Pass is strictly capped at the first 100 students—after 100 enrollments, the price rises to ₹799. Elite Mentorship is also capped at 50 seats.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal-item>
+            <button type="button" class="faq-q" aria-expanded="false">How do the AI Evaluation Credits work in Tier 2 and Tier 3?<i class="fa-solid fa-plus"></i></button>
+            <div class="faq-a"><div><p>1 Credit = 1 Milestone Test up to 30 marks; 2 Credits = 1 Full-Length 80-mark paper. Tier 2 gives 25 credits for 15 Milestone + 5 Full tests; Tier 3 gives 35 credits for 15 Milestone + 10 Full tests.</p></div></div>
+          </div>
+          <div class="faq-item" data-reveal-item>
+            <button type="button" class="faq-q" aria-expanded="false">How will I receive my portal login, tracker, and PDFs after payment?<i class="fa-solid fa-plus"></i></button>
+            <div class="faq-a"><div><p>Delivered via WhatsApp and Email within 2–4 hours of checkout.</p></div></div>
+          </div>
+        </div>
+
+        <details class="terms" id="terms" data-reveal>
+          <summary><span><i class="fa-solid fa-scale-balanced"></i> Terms &amp; Conditions</span><i class="fa-solid fa-chevron-down"></i></summary>
+          <ol class="terms-body">
+            <li><strong>Free First Week Access:</strong> Week 1 (Days 1–7) worksheets, notes, and Week 1 test evaluation are complimentary for all registered Class 10 students. Continued access from Day 8 to Day 75 requires an active Tier 1, Tier 2, or Tier 3 pass.</li>
+            <li><strong>Non-Refundable &amp; Non-Transferable Policy:</strong> Because instant digital access to copyrighted PDFs (<code>Day-XX.pdf</code>), answer keys, notes, and pre-allocated AI evaluation credits is provisioned upon enrollment, <strong>all fee payments across all paid tiers (₹249, ₹599, ₹799, and ₹1,499) are strictly non-refundable and non-transferable</strong>.</li>
+            <li><strong>AI Credit Usage &amp; Validity (Tier 2 &amp; Tier 3):</strong>
+              <ul>
+                <li>Credits are deducted strictly per submission: <strong>1 Credit</strong> for question papers up to 30 marks, and <strong>2 Credits</strong> for question papers from 31 to 80 marks.</li>
+                <li>Uploading blank, blurred, illegible, or wrong-subject PDFs that trigger the AI evaluation engine will consume credits and cannot be reversed. Please preview your PDF scan before submitting.</li>
+                <li>All allocated AI credits are valid until the completion of the <strong>CBSE Class 10 Board Examinations (March/April 2027)</strong>.</li>
               </ul>
-              <button type="button" class="btn-gold-outline btn-block" onclick="openDemoModal('Class 11-12 Senior Secondary')">
-                <span>Enroll in Class 11 / 12 Batch</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-
-          </div>
-
-          <!-- Pinned Location & Contact Bar at Bottom of Stage 3 -->
-          <div class="stage3-location-bar">
-            <div class="loc-details">
-              <i class="fa-solid fa-location-dot loc-pin-icon text-cyan"></i>
-              <div class="loc-text">
-                <span class="loc-address">Fatak Road, Opposite ICICI Bank, Jaora (M.P.)</span>
-                <span class="loc-sub">Hybrid & Offline Admissions Now Open for New Academic Session</span>
-              </div>
-            </div>
-            <div class="loc-action">
-              <button type="button" class="btn-cyan-glow btn-pulse" onclick="openDemoModal('Stage 3 Bottom Bar')">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>Book a Free Demo Class</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
+            </li>
+            <li><strong>Single-User License &amp; Anti-Piracy:</strong> All Daily Practice Sheets, Notes, Answer Keys, and AI evaluation reports are the intellectual property of <strong>Bhavishya SMS (Jaora)</strong>. Sharing login credentials or forwarding paid PDFs on public groups will result in immediate account termination without refund.</li>
+          </ol>
+        </details>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 3. DEEP-DIVE METHODOLOGY BENTO GRID (Why Bhavishya SMS)                   -->
-  <!-- ========================================================================= -->
-  <section id="methodology" class="section-padding bg-black relative">
-    <div class="container">
-      
-      <div class="section-head text-center">
-        <span class="section-eyebrow">THE PEDAGOGICAL BREAKTHROUGH</span>
-        <h2 class="section-title">
-          Why Standard Tuition Fails & Why <span class="text-gradient-cyan">Bhavishya SMS Succeeds</span>
-        </h2>
-        <p class="section-lead">
-          Traditional coaching forces students to cram formulas. We rewire how students understand math and science through visual logic and high-retention frameworks.
-        </p>
-      </div>
-
-      <div class="bento-grid">
-        
-        <!-- Bento 1: 3D Holographic Visuals -->
-        <div class="bento-card bento-span-2 tilt-card" data-tilt>
-          <div class="bento-glow-border"></div>
-          <div class="bento-content">
-            <div class="bento-icon-tag"><i class="fa-solid fa-cubes-stacked text-cyan"></i> Feature 01</div>
-            <h3 class="bento-title">3D Concept Visualization</h3>
-            <p class="bento-desc">
-              From electromagnetic induction to 3D geometry and chemical bonding, students manipulate visual models rather than staring at flat textbook diagrams.
-            </p>
-            <div class="bento-visual-stat">
-              <div class="stat-badge"><span class="text-cyan font-bold">4.2x</span> Faster Concept Grasping</div>
-              <div class="stat-badge"><span class="text-gold font-bold">95%</span> Long-term Retention</div>
-            </div>
-          </div>
+    <!-- Final CTA band -->
+    <section class="final-cta">
+      <div class="container final-inner" data-reveal>
+        <div>
+          <h2>Start Day 1 free today. Lock your ₹599 seat before it's ₹799.</h2>
+          <p>Week 1 is open to everyone — the Early Bird price is not.</p>
         </div>
-
-        <!-- Bento 2: Active Blurting & Feynman Drills -->
-        <div class="bento-card tilt-card" data-tilt>
-          <div class="bento-glow-border"></div>
-          <div class="bento-content">
-            <div class="bento-icon-tag"><i class="fa-solid fa-brain text-gold"></i> Feature 02</div>
-            <h3 class="bento-title">Active Recall & Blurting</h3>
-            <p class="bento-desc">
-              No passive listening. Every session includes structured blurting sheets where students extract formulas from memory on the spot.
-            </p>
-          </div>
-        </div>
-
-        <!-- Bento 3: Data-Driven PYQ Blueprints -->
-        <div class="bento-card tilt-card" data-tilt>
-          <div class="bento-glow-border"></div>
-          <div class="bento-content">
-            <div class="bento-icon-tag"><i class="fa-solid fa-chart-line text-cyan"></i> Feature 03</div>
-            <h3 class="bento-title">CBSE Blueprint Analysis</h3>
-            <p class="bento-desc">
-              We decode the last 15 years of board papers to predict repeat question clusters and train step-by-step presentation.
-            </p>
-          </div>
-        </div>
-
-        <!-- Bento 4: Offline Jaora Center + Hybrid 24/7 Portal -->
-        <div class="bento-card bento-span-2 tilt-card" data-tilt>
-          <div class="bento-glow-border"></div>
-          <div class="bento-content">
-            <div class="bento-icon-tag"><i class="fa-solid fa-laptop-code text-gold"></i> Feature 04</div>
-            <h3 class="bento-title">The Hybrid Powerhouse</h3>
-            <p class="bento-desc">
-              Missed a class due to illness or school functions? Every lecture is archived in ultra HD with chapter bookmarks, digital notes, and 24/7 doubt resolution.
-            </p>
-            <div class="hybrid-features-list">
-              <span><i class="fa-solid fa-circle-check text-cyan"></i> Air-Conditioned Smart Classroom</span>
-              <span><i class="fa-solid fa-circle-check text-cyan"></i> Mobile Revision Portal</span>
-              <span><i class="fa-solid fa-circle-check text-cyan"></i> WhatsApp Doubt Line</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 4. BOARD TOPPERS & RESULTS WALL OF FAME                                   -->
-  <!-- ========================================================================= -->
-  <section id="results" class="section-padding bg-dark-surface relative border-y-dark">
-    <div class="container">
-      
-      <div class="section-head text-center">
-        <span class="section-eyebrow text-gold">PROVEN BOARD TRACK RECORD</span>
-        <h2 class="section-title">
-          Results That Speak Louder Than <span class="text-gradient-gold">Promises</span>
-        </h2>
-        <p class="section-lead">
-          Year after year, students of Bhavishya SMS dominate the CBSE & MP Board merit lists in Jaora and surrounding districts.
-        </p>
-      </div>
-
-      <!-- Toppers Grid -->
-      <div class="toppers-grid">
-        
-        <div class="topper-card tilt-card" data-tilt>
-          <div class="topper-badge-top">CBSE CLASS 10</div>
-          <div class="topper-score text-cyan">98.6%</div>
-          <h4 class="topper-name">Aarav Mehta</h4>
-          <p class="topper-subjects">Maths: 100/100 • Science: 99/100</p>
-          <blockquote class="topper-quote">
-            "Yash Sir's 3D concept breakdown made complex trigonometry and physics numericals feel like solving simple puzzles!"
-          </blockquote>
-        </div>
-
-        <div class="topper-card tilt-card" data-tilt>
-          <div class="topper-badge-top gold-badge">CBSE CLASS 12</div>
-          <div class="topper-score text-gold">97.4%</div>
-          <h4 class="topper-name">Priyanka Sharma</h4>
-          <p class="topper-subjects">Physics: 98/100 • Maths: 99/100</p>
-          <blockquote class="topper-quote">
-            "The PYQ step-marking presentation strategy taught at Bhavishya SMS was the exact reason I scored full marks in derivations."
-          </blockquote>
-        </div>
-
-        <div class="topper-card tilt-card" data-tilt>
-          <div class="topper-badge-top">CBSE CLASS 10</div>
-          <div class="topper-score text-cyan">97.8%</div>
-          <h4 class="topper-name">Rohan Patidar</h4>
-          <p class="topper-subjects">Science: 99/100 • Social: 98/100</p>
-          <blockquote class="topper-quote">
-            "Active recall sessions and blurting worksheets removed my exam anxiety completely. Best coaching in Jaora without a doubt!"
-          </blockquote>
-        </div>
-
-      </div>
-
-      <!-- Trust Badges -->
-      <div class="trust-counter-bar">
-        <div class="trust-item">
-          <span class="trust-number text-cyan">500+</span>
-          <span class="trust-caption">Students Mentored</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item">
-          <span class="trust-number text-gold">45+</span>
-          <span class="trust-caption">90%+ Board Scorers</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item">
-          <span class="trust-number text-white">100%</span>
-          <span class="trust-caption">Concept Clarity Guarantee</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item">
-          <span class="trust-number text-cyan">15+</span>
-          <span class="trust-caption">Years Past Papers Analyzed</span>
+        <div class="final-actions">
+          <a href="#free-week-1" data-link="free_week1_access" class="btn btn-lime btn-lg">Start Week 1 Free</a>
+          <a href="#pricing" class="btn btn-outline-light btn-lg">See Passes</a>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 5. MEET YOUR MENTOR: YASH BARMECHA                                        -->
-  <!-- ========================================================================= -->
-  <section id="educator" class="section-padding bg-black relative">
-    <div class="container">
-      <div class="educator-wrapper">
-        
-        <div class="educator-bio-side">
-          <span class="section-eyebrow text-cyan">FOUNDER & CHIEF EDUCATOR</span>
-          <h2 class="section-title">
-            Meet <span class="text-gradient-cyan">Yash Barmecha</span>
-          </h2>
-          <p class="educator-subtitle text-gold">
-            "Education is not the learning of facts, but the training of the mind to think."
-          </p>
-          <p class="educator-text">
-            With over a decade of teaching excellence, Yash Barmecha founded <strong class="text-white">Bhavishya SMS (Study Made Simple)</strong> with a singular mission: to eliminate the rote-learning epidemic in competitive schooling.
-          </p>
-          <p class="educator-text">
-            Combining modern 3D cognitive simulations with traditional academic discipline, Yash Sir has personally guided hundreds of students to board topper ranks and engineering/medical entrance foundations.
-          </p>
-
-          <div class="educator-highlights-grid">
-            <div class="highlight-item">
-              <i class="fa-solid fa-chalkboard-user text-cyan"></i>
-              <div>
-                <strong>Interactive Digital Board Specialist</strong>
-                <p>Every formula derived visually in front of the students.</p>
-              </div>
-            </div>
-            <div class="highlight-item">
-              <i class="fa-solid fa-bullhorn text-gold"></i>
-              <div>
-                <strong>Host of @Bhavishya_sms YouTube</strong>
-                <p>Delivering free marathon revisions and concept capsules.</p>
-              </div>
-            </div>
-            <div class="highlight-item">
-              <i class="fa-solid fa-hand-holding-heart text-cyan"></i>
-              <div>
-                <strong>Direct Personal Mentorship</strong>
-                <p>Every student's test copies checked personally by Yash Sir.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="educator-action-row">
-            <button type="button" class="btn-cyan-glow" onclick="openDemoModal('Educator Section')">
-              <span>Book a Session With Yash Sir</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <a href="https://youtube.com/@Bhavishya_sms" target="_blank" rel="noopener noreferrer" class="btn-glass">
-              <i class="fa-brands fa-youtube text-red"></i>
-              <span>Watch Free Lectures</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="educator-card-side">
-          <div class="mentor-featured-box tilt-card" data-tilt>
-            <div class="mentor-badge">DIRECTOR & EDUCATOR</div>
-            <div class="mentor-avatar-container">
-              <img src="frames/frame_0180.webp" alt="Yash Barmecha - Educator gesturing with hologram" class="mentor-avatar-img">
-              <div class="avatar-glow-ring"></div>
-            </div>
-            <h3 class="mentor-name">Yash Barmecha</h3>
-            <p class="mentor-role">Founder, Bhavishya SMS</p>
-            <div class="mentor-tags">
-              <span>CBSE Specialist</span>
-              <span>3D Concept Coach</span>
-              <span>Jaora, M.P.</span>
-            </div>
-            <div class="mentor-quote-box">
-              <i class="fa-solid fa-quote-left quote-icon"></i>
-              <span>"My promise to parents: your child will never need to memorize a concept blindly ever again."</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 6. FREQUENTLY ASKED QUESTIONS (FAQ) ACCORDION                             -->
-  <!-- ========================================================================= -->
-  <section id="faq" class="section-padding bg-dark-surface relative border-t-dark">
-    <div class="container">
-      
-      <div class="section-head text-center">
-        <span class="section-eyebrow text-cyan">CLEAR ANSWERS</span>
-        <h2 class="section-title">
-          Frequently Asked <span class="text-gradient-cyan">Questions</span>
-        </h2>
-        <p class="section-lead">
-          Have queries before joining? Here is everything you need to know about our batches, methodology, and admissions.
-        </p>
-      </div>
-
-      <div class="faq-container">
-        
-        <div class="faq-item active">
-          <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>Can my child attend a free trial class before paying fees?</span>
-            <i class="fa-solid fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Yes! We offer a <strong>2-Day Complimentary Demo Pass</strong> for both offline batches in Jaora and hybrid online students. This lets the student experience our 3D teaching methodology and classroom energy firsthand with zero financial obligation.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>What is the batch size at the Jaora offline center?</span>
-            <i class="fa-solid fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-answer">
-            <p>
-              To maintain high individual attention, we strictly limit each offline batch to <strong>25 students maximum</strong>. This ensures Yash Sir can monitor every student's notebook, evaluate answer writing, and clear personal doubts every single day.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>How does the Hybrid Revision Portal work?</span>
-            <i class="fa-solid fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Every offline student gets complimentary access to our digital repository. If a student is absent or needs to revise before school unit tests, they can replay the exact lecture in full HD, view handwritten digital board notes, and download chapter test sheets 24/7.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>Which subjects are covered for Class 9 and 10?</span>
-            <i class="fa-solid fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-answer">
-            <p>
-              We provide comprehensive mastery in <strong>Mathematics, Science (Physics, Chemistry, Biology), Social Science (History, Civics, Geography, Economics)</strong>, along with focused board English writing workshops and sample paper marathons.
-            </p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(this)">
-            <span>Where exactly is the coaching center located in Jaora?</span>
-            <i class="fa-solid fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Our flagship center is conveniently situated at <strong>Fatak Road, Opposite ICICI Bank, Jaora (Madhya Pradesh)</strong>. It is equipped with digital interactive flat panels, air-conditioned comfortable seating, and secure parking.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 7. CENTER LOCATION & FINAL CONVERSION HUB                                 -->
-  <!-- ========================================================================= -->
-  <section id="contact-hub" class="section-padding bg-black relative">
-    <div class="container">
-      <div class="contact-card-hub">
-        
-        <div class="hub-grid">
-          
-          <div class="hub-info">
-            <span class="section-eyebrow text-gold">VISIT US OR CALL TODAY</span>
-            <h2 class="hub-heading">
-              Secure Your Child's Seat in <span class="text-gradient-cyan">Jaora's Premier Academy</span>
-            </h2>
-            <p class="hub-desc">
-              Admissions for the 2026–2027 academic session are now open. Seats are filled strictly on a first-come, first-served basis.
-            </p>
-
-            <div class="hub-contacts">
-              <div class="contact-entry">
-                <div class="entry-icon"><i class="fa-solid fa-location-dot text-cyan"></i></div>
-                <div>
-                  <h4 class="entry-label">Center Address</h4>
-                  <p class="entry-val">Fatak Road, Opposite ICICI Bank, Jaora, Madhya Pradesh - 457226</p>
-                </div>
-              </div>
-
-              <div class="contact-entry">
-                <div class="entry-icon"><i class="fa-solid fa-phone text-gold"></i></div>
-                <div>
-                  <h4 class="entry-label">Direct Admissions Line</h4>
-                  <a href="tel:+919425984501" class="entry-val entry-link">+91 94259 84501 / +91 98270 XXXXX</a>
-                </div>
-              </div>
-
-              <div class="contact-entry">
-                <div class="entry-icon"><i class="fa-brands fa-youtube text-red"></i></div>
-                <div>
-                  <h4 class="entry-label">YouTube Official Channel</h4>
-                  <a href="https://youtube.com/@Bhavishya_sms" target="_blank" rel="noopener noreferrer" class="entry-val entry-link">@Bhavishya_sms (Daily concept shorts & marathons)</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="hub-button-row">
-              <button type="button" class="btn-cyan-glow btn-lg" onclick="openDemoModal('Footer Hub')">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Book 2-Day Free Demo Now</span>
-              </button>
-              <a href="https://wa.me/919425984501?text=Hello%20Yash%20Sir,%20I%20want%20to%20visit%20the%20Jaora%20center%20for%20admission" target="_blank" rel="noopener noreferrer" class="btn-glass btn-lg">
-                <i class="fa-brands fa-whatsapp text-green"></i>
-                <span>Direct WhatsApp Chat</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Quick Interactive Inquiry Form -->
-          <div class="hub-form-wrapper">
-            <div class="glass-form-card">
-              <h3 class="form-title">Quick Demo Class Request</h3>
-              <p class="form-subtitle">Fill in details for immediate callback & seat reservation</p>
-
-              <form id="quick-inquiry-form" onsubmit="handleInquirySubmit(event)">
-                <div class="form-group">
-                  <label for="student-name">Student's Full Name</label>
-                  <input type="text" id="student-name" required placeholder="e.g. Rahul Sharma" class="form-input">
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="student-class">Class</label>
-                    <select id="student-class" required class="form-input">
-                      <option value="Class 9">Class 9 (CBSE / State)</option>
-                      <option value="Class 10" selected>Class 10 (Board Exam)</option>
-                      <option value="Class 11">Class 11 (Senior Sec)</option>
-                      <option value="Class 12">Class 12 (Board + Ent)</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="student-phone">Phone / WhatsApp</label>
-                    <input type="tel" id="student-phone" required placeholder="10-digit Mobile No." pattern="[0-9]{10}" class="form-input">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="learning-mode">Preferred Learning Mode</label>
-                  <select id="learning-mode" class="form-input">
-                    <option value="Offline Jaora Classroom" selected>Offline (Jaora Smart Classroom)</option>
-                    <option value="Hybrid / Online">Hybrid / Online Live Stream</option>
-                  </select>
-                </div>
-
-                <button type="submit" class="btn-cyan-glow btn-block btn-submit">
-                  <span>Confirm Demo Registration</span>
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
-                <p class="form-privacy">🔒 100% confidential. No spam calls. Verified callback within 2 hours.</p>
-              </form>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- 8. FOOTER                                                                 -->
-  <!-- ========================================================================= -->
+  <!-- ===================================================================== -->
+  <!-- FOOTER                                                                -->
+  <!-- ===================================================================== -->
   <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <div class="footer-brand">
-          <span class="brand-title">BHAVISHYA <span class="sms-badge">SMS</span></span>
-          <p class="footer-motto">Study Made Simple • Conceptual Clarity For Champions</p>
-        </div>
-        <p class="footer-copy">© 2026 Bhavishya SMS. All Rights Reserved. Headed by Yash Barmecha.</p>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Bhavishya — Study Made Simple" width="240" height="240" class="footer-logo">
+        <p><strong>Bhavishya SMS</strong> (Bhavishya — Study Made Simple)</p>
+        <p class="muted">Century in 75 — CBSE Class 10 Board Exam Master Series</p>
       </div>
-
-      <div class="footer-socials">
-        <a href="https://youtube.com/@Bhavishya_sms" target="_blank" rel="noopener noreferrer" class="social-circle" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/919425984501" target="_blank" rel="noopener noreferrer" class="social-circle" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://instagram.com/Bhavishya_sms" target="_blank" rel="noopener noreferrer" class="social-circle" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <div>
+        <h3>Contact</h3>
+        <ul class="footer-list">
+          <li><i class="fa-solid fa-location-dot"></i> <span><strong>Offline Center:</strong> Fatak Road, Opposite ICICI Bank, Jaora (M.P.)</span></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:bhavishyaclasses24@gmail.com">bhavishyaclasses24@gmail.com</a></li>
+          <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/918889404060" target="_blank" rel="noopener">+91 8889404060</a> <span class="muted">(Phone / WhatsApp Support)</span></li>
+          <li><i class="fa-brands fa-youtube"></i> <a href="https://www.youtube.com/@Bhavishya_sms" target="_blank" rel="noopener">@Bhavishya_sms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Series</h3>
+        <ul class="footer-list plain">
+          <li><a href="#free-week-1">Week 1 Free</a></li>
+          <li><a href="#how-it-works">How it Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#terms" data-open-terms>Terms &amp; Conditions</a></li>
+          <li><a href="coaching.html">Bhavishya SMS Coaching (Jaora)</a></li>
+        </ul>
       </div>
     </div>
+    <p class="container copyright">© <span id="year">2026</span> Bhavishya SMS, Jaora. All rights reserved.</p>
   </footer>
 
-  <!-- ========================================================================= -->
-  <!-- 9. INTERACTIVE DEMO BOOKING MODAL                                         -->
-  <!-- ========================================================================= -->
-  <div id="demoModal" class="modal-backdrop" aria-hidden="true">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeDemoModal()" aria-label="Close Modal">&times;</button>
-      
-      <div class="modal-header">
-        <div class="modal-icon-badge"><i class="fa-solid fa-graduation-cap text-cyan"></i></div>
-        <h3 class="modal-title">Book Your 2-Day Free Demo</h3>
-        <p class="modal-sub">Experience Yash Sir's 3D Holographic Class at Bhavishya SMS, Jaora</p>
-      </div>
-
-      <form id="modal-booking-form" onsubmit="handleModalSubmit(event)">
-        <div class="form-group">
-          <label for="modal-name">Student Name</label>
-          <input type="text" id="modal-name" required placeholder="Enter student name" class="form-input">
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="modal-class">Class</label>
-            <select id="modal-class" class="form-input">
-              <option value="Class 9">Class 9</option>
-              <option value="Class 10" selected>Class 10 (Board)</option>
-              <option value="Class 11">Class 11</option>
-              <option value="Class 12">Class 12 (Board)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="modal-phone">WhatsApp Number</label>
-            <input type="tel" id="modal-phone" required placeholder="10-digit number" pattern="[0-9]{10}" class="form-input">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="modal-school">School Name & City</label>
-          <input type="text" id="modal-school" placeholder="e.g. St. Paul's / DPS, Jaora" class="form-input">
-        </div>
-
-        <div class="form-group">
-          <label>Target Exam / Goal</label>
-          <div class="radio-pill-group">
-            <label class="radio-pill">
-              <input type="radio" name="goal" value="Board 95%+" checked>
-              <span>Board 95%+</span>
-            </label>
-            <label class="radio-pill">
-              <input type="radio" name="goal" value="Foundation & Concepts">
-              <span>Concept Clarity</span>
-            </label>
-            <label class="radio-pill">
-              <input type="radio" name="goal" value="Maths & Science Fear">
-              <span>Remove Subject Fear</span>
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="btn-cyan-glow btn-block">
-          <span>Reserve Free Demo Seat Now</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </form>
-      <div id="modal-success-state" class="modal-success d-none">
-        <i class="fa-solid fa-circle-check success-icon"></i>
-        <h4>Seat Reserved Successfully!</h4>
-        <p>Our academic coordinator will WhatsApp you the batch schedule and center directions shortly.</p>
-        <button type="button" class="btn-glass" onclick="closeDemoModal()">Close</button>
-      </div>
-    </div>
+  <!-- Mobile sticky conversion bar -->
+  <div class="mobile-cta" id="mobile-cta" aria-hidden="true">
+    <a href="#free-week-1" data-link="free_week1_access" class="btn btn-outline-dark btn-sm">Week 1 Free</a>
+    <a href="#pricing" class="btn btn-primary btn-sm">Passes from ₹249</a>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- 10. MOBILE FLOATING ACTION DOCK                                           -->
-  <!-- ========================================================================= -->
-  <div class="mobile-dock d-none-desktop">
-    <a href="tel:+919425984501" class="dock-btn dock-call">
-      <i class="fa-solid fa-phone"></i>
-      <span>Call</span>
-    </a>
-    <a href="https://wa.me/919425984501?text=Hi%20Yash%20Sir,%20I%20want%20to%20book%20a%20demo%20at%20Bhavishya%20SMS" target="_blank" rel="noopener noreferrer" class="dock-btn dock-wa">
-      <i class="fa-brands fa-whatsapp"></i>
-      <span>WhatsApp</span>
-    </a>
-    <button type="button" class="dock-btn dock-demo btn-cyan-glow" onclick="openDemoModal('Mobile Dock')">
-      <i class="fa-solid fa-bolt"></i>
-      <span>Book Demo</span>
-    </button>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- CDN LIBRARIES: GSAP, ScrollTrigger, Lenis                                 -->
-  <!-- ========================================================================= -->
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Main Application Script -->
-  <script src="script.js"></script>
+  <script src="series.js"></script>
 </body>
 </html>

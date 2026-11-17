@@ -2,8 +2,8 @@
 // After deploying the Apps Script web app (century75/web/SETUP.md in the AI Editor folder), paste its URL here:
 var C75_API = 'PASTE_WEB_APP_URL_HERE';
 
-// Passes (same Razorpay links as series.js on the Century in 75 page in the Bhavishya-SMS repo: change both together).
-var C75_SERIES_PAGE = 'https://yashjain957579-a11y.github.io/Bhavishya-SMS/century-in-75.html';
+// Passes (same Razorpay links as series.js, the Century in 75 home page of this site: change both together).
+var C75_SERIES_PAGE = '../index.html';
 var C75_FREE_UNTIL = '2026-11-22';  // last free day (Day 7, Sunday)
 var C75_WHATSAPP = '918889404060';
 var C75_PLANS = [
