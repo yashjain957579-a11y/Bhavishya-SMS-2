@@ -1,6 +1,6 @@
 // Century in 75 · shared settings for quiz.html and leaderboard.html.
 // After deploying the Apps Script web app (century75/web/SETUP.md in the AI Editor folder), paste its URL here:
-var C75_API = 'PASTE_WEB_APP_URL_HERE';
+var C75_API = 'https://script.google.com/macros/s/AKfycbze1ga1BfEV4eZgRRwfnxgKx7p6RE9WmCqQI0XnnrbBV-zPz38wI_LOVo_Fb7DjM2LwNw/exec';
 
 // Passes (same Razorpay links as series.js, the Century in 75 home page of this site: change both together).
 var C75_SERIES_PAGE = '../index.html';
