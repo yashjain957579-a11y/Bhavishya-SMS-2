@@ -66,7 +66,7 @@
     if (!past.length) return null;
     return el('div', { class: 'card' }, [
       el('h2', { text: 'Practise other days' }),
-      el('p', { class: 'muted small', text: 'Only the first attempt on the day itself (before 11 PM) counts for the leaderboard.' }),
+      el('p', { class: 'muted small', text: 'Only the first attempt on the day itself (before 12 midnight) counts for the leaderboard.' }),
       el('div', { class: 'topics' }, past.map(function (d) { return el('a', { class: 'pill', href: '?day=' + d, text: 'Day ' + C75.pad(d) }); }))
     ]);
   }

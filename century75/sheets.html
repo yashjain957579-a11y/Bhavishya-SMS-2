@@ -76,7 +76,7 @@
   function keyBtn(d) {
     if (d.key === 'ok') return C75.dlButton('🔑 ' + (d.keyLabel || 'Answer key'), '', d.day, 'key', getMe);
     if (d.key === 'quiz') return el('a', { class: 'btn locked', href: 'quiz.html?day=' + d.day, text: '🔒 Take the Day ' + C75.pad(d.day) + ' quiz to unlock the key' });
-    if (d.key === 'later') return el('button', { class: 'btn locked', disabled: '', text: '🔒 Answer key opens at 11:00 pm' });
+    if (d.key === 'later') return el('button', { class: 'btn locked', disabled: '', text: '🔒 Answer key opens at 12 midnight' });
     if (d.key === 'pass') return el('a', { class: 'btn locked', href: '#passes', text: '🔒 Answer key: pass needed' });
     return null;
   }
